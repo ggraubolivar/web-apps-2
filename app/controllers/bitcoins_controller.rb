@@ -1,7 +1,7 @@
 class BitcoinsController < ApplicationController
 
-  def index
-    @bitcoin = 1.0
+  def create
+    @bitcoin = params["amount"]
     require "net/http"
     require "json"
     @url = "https://api.coindesk.com/v1/bpi/currentprice.json"
@@ -15,6 +15,10 @@ class BitcoinsController < ApplicationController
     # calculate value in USD of user's bitcoin
     @usd_value = @usd_rate * @bitcoin.to_f
   
+  end
+
+  def index
+    
   end
   
 end
